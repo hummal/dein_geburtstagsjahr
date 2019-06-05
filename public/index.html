@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Geburtstagsjahrzähler</title>
+    <style type="text/css">
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        #app-spinner svg {
+            width: 3.75em;
+            animation: 1.5s spin ease infinite;
+        }
+
+        #app-spinner .ring {
+            fill: none;
+            stroke: hsla(341, 97%, 59%, 0.3);
+            stroke-width: 2;
+        }
+
+        #app-spinner .ball {
+            fill: #fc2f70;
+            stroke: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app-spinner">
+        <svg viewBox="0 0 50 50">
+            <circle class="ring" cx="25" cy="25" r="20"></circle>
+            <circle class="ball" cx="25" cy="5" r="3.5"></circle>
+        </svg>
+    </div>
+    <div id="app"></div>
+    <script type="text/javascript" src="dist/bundle.js"></script>
+</body>
+
+</html>
