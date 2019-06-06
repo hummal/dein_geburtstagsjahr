@@ -7,8 +7,11 @@ class DateComponent extends React.Component {
     constructor() {
         super();
 
-        const startDateTs = Config.startDate || Date.now();
-        this.startMoment = moment(new Date(startDateTs));
+        const urlParams = new URLSearchParams(window.location.search ? window.location.search.slice(1) : "");
+
+        this.personName = urlParams.get('name') || "Max";
+        this.startDate = urlParams.get('date') ? new Date(urlParams.get('date')) : Date.now();
+        this.startMoment = moment(this.startDate);
         this.duration = 0;
         //this.updateDuration(true);
         this.state = {
@@ -34,7 +37,7 @@ class DateComponent extends React.Component {
         this.duration = moment.duration(nowMoment.diff(this.startMoment));
 
         const dayCount = this.duration.days() + 1; // +1 because we want today is counted aswell
-        const weekCount = dayCount % 30 % 4;
+        const weekCount = Math.floor(dayCount / 7) % 4 + 1;
         const monthCount = Math.floor(dayCount / 30.417);
         const yearCount = Math.floor(monthCount / 12);
 

@@ -4,8 +4,11 @@ import DateComponent from './DateComponent';
 class BirthdayComponent extends Component {
     constructor() {
         super();
+
+        const urlParams = new URLSearchParams(window.location.search ? window.location.search.slice(1) : "");
+
         this.state = {
-            title: "Herzlichen Glückwunsch"
+            title: "Herzlichen Glückwunsch " + urlParams.get('name') || "Max"
         };
     }
 
